@@ -22,14 +22,28 @@ let addMovie =(event)=>{
 
   let deleteMovie = (event) => {
     event.target.parentNode.remove()
-    message.textContent = 'Movie Deleted!'
+    message.textContent = event.target.parentNode.childNodes[0].textContent + ' Deleted'
+    revealMessage()
   }
 
 let crossOffMovie =(event)=>{
     event.target.classList.toggle('checked') 
     if(event.target.classList.contains('checked')){
-        message.textContent = 'Movie Watched!'
+        message.textContent = `${event.target.textContent} Watched!`
     }else {
-        message.textContent = 'Movie Added Back!'
+        message.textContent = `${event.target.textContent} Added Back!` 
     }
+    revealMessage()
 }
+
+let revealMessage = () => {
+    message.classList.remove('hide')
+     let timeOut = setTimeout(() => {
+        message.classList.add('hide')
+     }, 1000)
+     
+}
+
+
+
+
